@@ -1,0 +1,62 @@
+body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f7fa;
+        color: #222;
+        text-align: center;
+        margin: 0;
+        padding: 2rem;
+      }
+
+      h1 {
+        color: #1976d2;
+        margin-bottom: 1.5rem;
+      }
+
+      section {
+        background: #fff;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      h2 {
+        color: #1565c0;
+        text-align: center;
+      }
+
+      ol {
+        line-height: 1.8;
+      }
+
+      /* Workflow Diagram Styling */
+      .diagram {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .box {
+        background: #e3f2fd;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        border: 2px solid #1976d2;
+        font-weight: 600;
+        min-width: 160px;
+      }
+
+      .arrow {
+        font-size: 1.2rem;
+        color: #1976d2;
+      }
+
+      .command {
+        font-size: 0.9rem;
+        color: #444;
+        margin-top: 0.3rem;
+        font-family: "Courier New", monospace;
+      }

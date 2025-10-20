@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>git-github learning</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Git & GitHub Learning</title>
+  </head>
+
+  <body>
+    <h1>Git & GitHub Learning</h1>
+
+    <!-- Git Commands Section -->
+    <section class="commands">
+      <h2>Git Commands</h2>
+
+      <h3>Setup</h3>
+      <ol>
+        <li>git config --global user.name "username"</li>
+        <li>git config --global user.email "email@example.com"</li>
+      </ol>
+
+      <h3>Push Code to GitHub</h3>
+      <ol>
+        <li>git init</li>
+        <li>git add &lt;filename&gt;</li>
+        <li>git status</li>
+        <li>git commit -m "&lt;message&gt;"</li>
+        <li>git branch -M main</li>
+        <li>git remote add origin &lt;URL&gt;</li>
+        <li>git push -u origin main</li>
+      </ol>
+    </section>
+
+    <!-- Git Workflow Section -->
+    <h2>Git Workflow</h2>
+
+    <div class="diagram">
+      <div class="box">Working Directory</div>
+      <div class="arrow">➡</div>
+      <div class="command">git add</div>
+
+      <div class="box">Staging Area</div>
+      <div class="arrow">➡</div>
+      <div class="command">git commit</div>
+
+      <div class="box">Local Repository</div>
+      <div class="arrow">➡</div>
+      <div class="command">git push</div>
+
+      <div class="box">Remote Repository (GitHub)</div>
+    </div>
+  </body>
 </html>
