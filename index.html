@@ -31,24 +31,35 @@
         <li>git push -u origin main</li>
       </ol>
     </section>
+    <section>
+      <!-- Git Workflow Section -->
+      <h2>Git Workflow</h2>
 
-    <!-- Git Workflow Section -->
-    <h2>Git Workflow</h2>
+      <div class="diagram">
+        <div class="box">Working Directory</div>
+        <div class="arrow">➡</div>
+        <div class="command">git add</div>
 
-    <div class="diagram">
-      <div class="box">Working Directory</div>
-      <div class="arrow">➡</div>
-      <div class="command">git add</div>
+        <div class="box">Staging Area</div>
+        <div class="arrow">➡</div>
+        <div class="command">git commit</div>
 
-      <div class="box">Staging Area</div>
-      <div class="arrow">➡</div>
-      <div class="command">git commit</div>
+        <div class="box">Local Repository</div>
+        <div class="arrow">➡</div>
+        <div class="command">git push</div>
 
-      <div class="box">Local Repository</div>
-      <div class="arrow">➡</div>
-      <div class="command">git push</div>
-
-      <div class="box">Remote Repository (GitHub)</div>
-    </div>
+        <div class="box">Remote Repository (GitHub)</div>
+      </div>
+    </section>
+    <section>
+      <h2>.gitignore</h2>
+      <p>
+        The .gitignore file is a fundamental component in Git for managing
+        version control by specifying intentionally untracked files and
+        directories that Git should ignore. It prevents these specified items
+        from being included in the repository's history and from appearing as
+        "untracked files" in git status.
+      </p>
+    </section>
   </body>
 </html>
