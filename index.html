@@ -42,19 +42,86 @@
       <h2>Git Workflow</h2>
 
       <div class="diagram">
-        <div class="box">Working Directory</div>
-        <div class="arrow">➡</div>
-        <div class="command">git add</div>
+        <!-- Working Directory -->
+        <div class="workflow-card card-working">
+          <div class="card-header">
+            <span class="card-icon">📁</span>
+            <span class="card-number">01</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Working Directory</h3>
+            <p class="card-description">Your local files & changes</p>
+          </div>
+        </div>
 
-        <div class="box">Staging Area</div>
-        <div class="arrow">➡</div>
-        <div class="command">git commit</div>
+        <!-- Connector -->
+        <div class="workflow-connector">
+          <div class="connector-line">
+            <div class="connector-dot"></div>
+          </div>
+          <div class="command-pill">
+            <span class="command-icon">▸</span>
+            <code>git add</code>
+          </div>
+        </div>
 
-        <div class="box">Local Repository</div>
-        <div class="arrow">➡</div>
-        <div class="command">git push</div>
+        <!-- Staging Area -->
+        <div class="workflow-card card-staging">
+          <div class="card-header">
+            <span class="card-icon">📦</span>
+            <span class="card-number">02</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Staging Area</h3>
+            <p class="card-description">Files ready to commit</p>
+          </div>
+        </div>
 
-        <div class="box">Remote Repository (GitHub)</div>
+        <!-- Connector -->
+        <div class="workflow-connector">
+          <div class="connector-line">
+            <div class="connector-dot"></div>
+          </div>
+          <div class="command-pill">
+            <span class="command-icon">▸</span>
+            <code>git commit -m "message"</code>
+          </div>
+        </div>
+
+        <!-- Local Repository -->
+        <div class="workflow-card card-local">
+          <div class="card-header">
+            <span class="card-icon">💾</span>
+            <span class="card-number">03</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Local Repository</h3>
+            <p class="card-description">Committed changes locally</p>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="workflow-connector">
+          <div class="connector-line">
+            <div class="connector-dot"></div>
+          </div>
+          <div class="command-pill">
+            <span class="command-icon">▸</span>
+            <code>git push</code>
+          </div>
+        </div>
+
+        <!-- Remote Repository -->
+        <div class="workflow-card card-remote">
+          <div class="card-header">
+            <span class="card-icon">☁️</span>
+            <span class="card-number">04</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Remote Repository</h3>
+            <p class="card-description">GitHub / GitLab / Bitbucket</p>
+          </div>
+        </div>
       </div>
     </section>
 
