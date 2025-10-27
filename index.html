@@ -180,6 +180,22 @@
         collaborators.
       </p>
 
+      <h3>Git Amend</h3>
+      <ul>
+        <li><code>git commit --amend</code> — Modify the last commit</li>
+        <li><code>git commit --amend -m "new message"</code> — Change the last commit message</li>
+        <li><code>git commit --amend --no-edit</code> — Add changes to last commit without changing message</li>
+        <li><code>git add &lt;file&gt; && git commit --amend --no-edit</code> — Add forgotten files to last commit</li>
+        <li><code>git commit --amend --author="Name &lt;email@example.com&gt;"</code> — Change commit author</li>
+      </ul>
+      <p>
+        git commit --amend is a Git command used to modify the most recent commit.
+        It allows you to change the commit message, add forgotten files, or fix
+        small mistakes without creating a new commit. This command rewrites history,
+        so avoid using it on commits that have already been pushed to a shared
+        repository, unless you're working on a private branch.
+      </p>
+
       <h3>Git Branches</h3>
       <ul>
         <li><code>git branch</code> — List all local branches</li>
@@ -200,6 +216,123 @@
         parts of a project simultaneously without interfering with each other's
         work. Branches are a core feature of Git's distributed version control
         system.
+      </p>
+
+      <h3>Git Clone</h3>
+      <ul>
+        <li><code>git clone &lt;repository_url&gt;</code> — Clone a repository into a new directory</li>
+        <li><code>git clone &lt;url&gt; &lt;directory_name&gt;</code> — Clone into a specific directory</li>
+        <li><code>git clone -b &lt;branch_name&gt; &lt;url&gt;</code> — Clone a specific branch</li>
+        <li><code>git clone --depth 1 &lt;url&gt;</code> — Shallow clone (only latest commit)</li>
+      </ul>
+      <p>
+        git clone is a Git command used to create a copy of an existing repository.
+        It downloads the entire repository including all files, branches, and commit
+        history to your local machine. This is typically the first command you run
+        when you want to work on an existing project from GitHub, GitLab, or other
+        remote repositories.
+      </p>
+
+      <h3>Git Pull</h3>
+      <ul>
+        <li><code>git pull</code> — Fetch and merge changes from remote</li>
+        <li><code>git pull origin &lt;branch_name&gt;</code> — Pull from specific branch</li>
+        <li><code>git pull --rebase</code> — Pull and rebase instead of merge</li>
+        <li><code>git pull --no-commit</code> — Pull without auto-committing merge</li>
+      </ul>
+      <p>
+        git pull is a Git command that fetches changes from a remote repository
+        and immediately merges them into your current branch. It's a combination
+        of git fetch followed by git merge. Use this command to update your local
+        branch with the latest changes from the remote repository.
+      </p>
+
+      <h3>Git Fetch</h3>
+      <ul>
+        <li><code>git fetch</code> — Download objects and refs from remote</li>
+        <li><code>git fetch origin</code> — Fetch from origin remote</li>
+        <li><code>git fetch --all</code> — Fetch from all remotes</li>
+        <li><code>git fetch --prune</code> — Remove deleted remote branches</li>
+      </ul>
+      <p>
+        git fetch is a Git command that downloads commits, files, and references
+        from a remote repository into your local repository, but doesn't merge them.
+        Unlike git pull, fetch lets you review changes before integrating them into
+        your work. It's a safer way to see what others have committed without
+        affecting your current work.
+      </p>
+
+      <h3>Git Diff</h3>
+      <ul>
+        <li><code>git diff</code> — Show unstaged changes</li>
+        <li><code>git diff --staged</code> — Show staged changes</li>
+        <li><code>git diff &lt;branch1&gt; &lt;branch2&gt;</code> — Compare two branches</li>
+        <li><code>git diff &lt;commit_hash&gt;</code> — Compare with specific commit</li>
+        <li><code>git diff HEAD</code> — Compare working directory with last commit</li>
+        <li><code>git diff &lt;file_name&gt;</code> — Show changes in specific file</li>
+      </ul>
+      <p>
+        git diff is a Git command used to show differences between commits, branches,
+        files, and more. It displays what has changed in your working directory,
+        staging area, or between different points in your project's history. This
+        is essential for reviewing changes before committing or understanding what
+        has changed between versions.
+      </p>
+
+      <h3>Git Stash</h3>
+      <ul>
+        <li><code>git stash</code> — Save changes temporarily</li>
+        <li><code>git stash save "message"</code> — Stash with a description</li>
+        <li><code>git stash list</code> — List all stashes</li>
+        <li><code>git stash pop</code> — Apply and remove latest stash</li>
+        <li><code>git stash apply</code> — Apply latest stash without removing it</li>
+        <li><code>git stash apply stash@{n}</code> — Apply specific stash</li>
+        <li><code>git stash drop stash@{n}</code> — Delete specific stash</li>
+        <li><code>git stash clear</code> — Remove all stashes</li>
+      </ul>
+      <p>
+        git stash is a Git command that temporarily saves your uncommitted changes
+        (both staged and unstaged) so you can work on something else, then come back
+        and re-apply them later. It's useful when you need to switch branches quickly
+        but aren't ready to commit your current work. Think of it as a clipboard for
+        your changes.
+      </p>
+
+      <h3>Pull Requests (PR)</h3>
+      <ul>
+        <li><strong>Step 1:</strong> Create a new branch — <code>git checkout -b feature-branch</code></li>
+        <li><strong>Step 2:</strong> Make changes and commit — <code>git add . && git commit -m "message"</code></li>
+        <li><strong>Step 3:</strong> Push branch to remote — <code>git push origin feature-branch</code></li>
+        <li><strong>Step 4:</strong> Create PR on GitHub/GitLab — Go to repository and click "New Pull Request"</li>
+        <li><strong>Step 5:</strong> Review and discuss changes — Team reviews code and suggests improvements</li>
+        <li><strong>Step 6:</strong> Merge PR — Click "Merge Pull Request" after approval</li>
+        <li><strong>Step 7:</strong> Delete branch (optional) — <code>git branch -d feature-branch</code></li>
+      </ul>
+      <p>
+        A Pull Request (PR) is a method of submitting contributions to a project.
+        It lets you tell others about changes you've pushed to a branch in a repository.
+        Once a pull request is opened, you can discuss and review the potential changes
+        with collaborators and add follow-up commits before merging into the main branch.
+        PRs are essential for code review, collaboration, and maintaining code quality
+        in team projects.
+      </p>
+
+      <h3>Merge Conflicts</h3>
+      <ul>
+        <li><code>git status</code> — Check which files have conflicts</li>
+        <li>Open conflicted files and look for conflict markers: <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></li>
+        <li>Edit files to resolve conflicts manually</li>
+        <li><code>git add &lt;resolved-file&gt;</code> — Mark conflict as resolved</li>
+        <li><code>git commit</code> — Complete the merge</li>
+        <li><code>git merge --abort</code> — Abort merge and go back to previous state</li>
+        <li><code>git mergetool</code> — Use visual merge tool to resolve conflicts</li>
+      </ul>
+      <p>
+        Merge conflicts occur when Git can't automatically resolve differences between
+        two commits. This happens when two branches modify the same part of a file
+        differently. Git will mark the conflicts in the file and require you to manually
+        choose which changes to keep. Resolving conflicts is a normal part of
+        collaborative development and helps ensure code quality and consistency.
       </p>
     </section>
     </main>
