@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Comprehensive guide to Git and GitHub commands, workflows, and best practices for version control." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <title>Git & GitHub Learning</title>
+    <title>Git & GitHub Learning Guide</title>
   </head>
 
   <body>
-    <h1>Git & GitHub Learning</h1>
+    <main>
+      <h1>Git & GitHub Learning</h1>
 
     <!-- Git Commands Section -->
     <section class="commands">
@@ -16,22 +21,23 @@
 
       <h3>Setup</h3>
       <ol>
-        <li>git config --global user.name "username"</li>
-        <li>git config --global user.email "email@example.com"</li>
+        <li><code>git config --global user.name "username"</code></li>
+        <li><code>git config --global user.email "email@example.com"</code></li>
       </ol>
 
       <h3>Push Code to GitHub</h3>
       <ol>
-        <li>git init</li>
-        <li>git add &lt;filename&gt;</li>
-        <li>git status</li>
-        <li>git commit -m "&lt;message&gt;"</li>
-        <li>git branch -M main</li>
-        <li>git remote add origin &lt;URL&gt;</li>
-        <li>git push -u origin main</li>
+        <li><code>git init</code></li>
+        <li><code>git add &lt;filename&gt;</code></li>
+        <li><code>git status</code></li>
+        <li><code>git commit -m "&lt;message&gt;"</code></li>
+        <li><code>git branch -M main</code></li>
+        <li><code>git remote add origin &lt;URL&gt;</code></li>
+        <li><code>git push -u origin main</code></li>
       </ol>
     </section>
-    <section>
+
+    <section class="workflow">
       <!-- Git Workflow Section -->
       <h2>Git Workflow</h2>
 
@@ -51,7 +57,8 @@
         <div class="box">Remote Repository (GitHub)</div>
       </div>
     </section>
-    <section>
+
+    <section class="gitignore">
       <h2>.gitignore</h2>
       <p>
         The .gitignore file is a fundamental component in Git for managing
@@ -61,13 +68,15 @@
         "untracked files" in git status.
       </p>
     </section>
-    <section>
+
+    <section class="commands">
       <h2>Commands</h2>
+
       <h3>Git Restore</h3>
       <ul>
-        <li>git restore [options] &lt;file&gt;</li>
-        <li>git restore --staged &lt;file&gt;</li>
-        <li>git restore --source &lt;commit_hash&gt;&lt;file&gt;</li>
+        <li><code>git restore [options] &lt;file&gt;</code> — Restore file in working directory</li>
+        <li><code>git restore --staged &lt;file&gt;</code> — Unstage file</li>
+        <li><code>git restore --source &lt;commit_hash&gt; &lt;file&gt;</code> — Restore from specific commit</li>
       </ul>
       <p>
         git restore is a Git command used to undo changes in your working
@@ -77,13 +86,9 @@
 
       <h3>Git Revert</h3>
       <ul>
-        <li>git revert &lt;commit_hash&gt;</li>
-        #Git will create a new commit that reverses the changes of the target
-        commit.
-        <li>git revert HEAD</li>
-        #Creates a new commit that undoes the last commit.
-        <li>git log</li>
-        # find the commit hash first
+        <li><code>git revert &lt;commit_hash&gt;</code> — Create new commit that reverses target commit</li>
+        <li><code>git revert HEAD</code> — Undo the last commit</li>
+        <li><code>git log</code> — Find the commit hash first</li>
       </ul>
       <p>
         git revert is a Git command used to undo a commit by creating a new
@@ -92,7 +97,44 @@
         commit history.
       </p>
 
-      <p>git revert practic</p>
+      <h3>Git Reset</h3>
+      <ul>
+        <li><code>git reset &lt;commit_hash&gt;</code> — Move HEAD to specified commit (default: --mixed mode)</li>
+        <li><code>git reset --soft &lt;commit_hash&gt;</code> — Keep changes in staging area</li>
+        <li><code>git reset --mixed &lt;commit_hash&gt;</code> — Keep changes in working directory but unstage them</li>
+        <li><code>git reset --hard &lt;commit_hash&gt;</code> — Discard all changes completely</li>
+        <li><code>git reset HEAD~1</code> — Undo the last commit</li>
+      </ul>
+      <p>
+        git reset is a Git command used to undo commits by moving the current
+        branch pointer to a different commit. Unlike git revert, it rewrites
+        commit history by removing commits. It's powerful but should be used
+        carefully, especially on shared branches, as it can cause issues for
+        collaborators.
+      </p>
+
+      <h3>Git Branches</h3>
+      <ul>
+        <li><code>git branch</code> — List all local branches</li>
+        <li><code>git branch &lt;branch_name&gt;</code> — Create a new branch</li>
+        <li><code>git branch -d &lt;branch_name&gt;</code> — Delete a branch (safe delete)</li>
+        <li><code>git branch -D &lt;branch_name&gt;</code> — Force delete a branch</li>
+        <li><code>git checkout &lt;branch_name&gt;</code> — Switch to an existing branch</li>
+        <li><code>git checkout -b &lt;branch_name&gt;</code> — Create and switch to a new branch</li>
+        <li><code>git switch &lt;branch_name&gt;</code> — Modern way to switch branches</li>
+        <li><code>git switch -c &lt;branch_name&gt;</code> — Create and switch to a new branch</li>
+        <li><code>git merge &lt;branch_name&gt;</code> — Merge specified branch into current branch</li>
+        <li><code>git branch -M &lt;new_name&gt;</code> — Rename current branch</li>
+      </ul>
+      <p>
+        Git branches are lightweight pointers to commits that allow you to work
+        on different features, bug fixes, or experiments in isolation. They
+        enable parallel development where multiple people can work on different
+        parts of a project simultaneously without interfering with each other's
+        work. Branches are a core feature of Git's distributed version control
+        system.
+      </p>
     </section>
+    </main>
   </body>
 </html>
