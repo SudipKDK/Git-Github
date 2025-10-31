@@ -13,33 +13,32 @@
 
   <body>
     <main>
-      <h1>Git & GitHub Learning</h1>
+      <h1>Git & GitHub Learning Guide</h1>
 
-    <!-- Git Commands Section -->
-    <section class="commands">
-      <h2>Git Commands</h2>
+    <!-- GIT BASICS -->
 
-      <h3>Setup</h3>
+    <section class="basics">
+      <h2>  Git Basics</h2>
+
+      <h3>Initial Setup</h3>
       <ol>
         <li><code>git config --global user.name "username"</code></li>
         <li><code>git config --global user.email "email@example.com"</code></li>
       </ol>
 
-      <h3>Push Code to GitHub</h3>
+      <h3>Getting Started - First Push</h3>
       <ol>
-        <li><code>git init</code></li>
-        <li><code>git add &lt;filename&gt;</code></li>
-        <li><code>git status</code></li>
-        <li><code>git commit -m "&lt;message&gt;"</code></li>
-        <li><code>git branch -M main</code></li>
-        <li><code>git remote add origin &lt;URL&gt;</code></li>
-        <li><code>git push -u origin main</code></li>
+        <li><code>git init</code> — Initialize repository</li>
+        <li><code>git add &lt;filename&gt;</code> — Stage files</li>
+        <li><code>git commit -m "message"</code> — Commit changes</li>
+        <li><code>git branch -M main</code> — Rename branch to main</li>
+        <li><code>git remote add origin &lt;URL&gt;</code> — Add remote</li>
+        <li><code>git push -u origin main</code> — Push to GitHub</li>
       </ol>
     </section>
 
     <section class="workflow">
-      <!-- Git Workflow Section -->
-      <h2>Git Workflow</h2>
+      <h2>Understanding Git Workflow</h2>
 
       <div class="diagram">
         <!-- Working Directory -->
@@ -126,7 +125,7 @@
     </section>
 
     <section class="gitignore">
-      <h2>.gitignore</h2>
+      <h2> .gitignore</h2>
       <p>
         The .gitignore file is a fundamental component in Git for managing
         version control by specifying intentionally untracked files and
@@ -136,65 +135,62 @@
       </p>
     </section>
 
+    <!-- ============================================ -->
+    <!-- DAILY WORKFLOW COMMANDS -->
+    <!-- ============================================ -->
+
     <section class="commands">
-      <h2>Commands</h2>
+      <h2>  Daily Workflow</h2>
 
-      <h3>Git Restore</h3>
+      <h3>Status & Diff</h3>
       <ul>
-        <li><code>git restore [options] &lt;file&gt;</code> — Restore file in working directory</li>
-        <li><code>git restore --staged &lt;file&gt;</code> — Unstage file</li>
-        <li><code>git restore --source &lt;commit_hash&gt; &lt;file&gt;</code> — Restore from specific commit</li>
+        <li><code>git status</code> — Check working directory status</li>
+        <li><code>git diff</code> — Show unstaged changes</li>
+        <li><code>git diff --staged</code> — Show staged changes</li>
+        <li><code>git diff &lt;file_name&gt;</code> — Show changes in specific file</li>
+      </ul>
+
+      <h3>Git Log</h3>
+      <ul>
+        <li><code>git log</code> — Show commit history</li>
+        <li><code>git log --oneline</code> — Compact one-line view</li>
+        <li><code>git log --graph</code> — Show branch structure</li>
+        <li><code>git log -n 5</code> — Show last 5 commits</li>
+        <li><code>git log --author="name"</code> — Filter by author</li>
+        <li><code>git log --grep="keyword"</code> — Search commit messages</li>
       </ul>
       <p>
-        git restore is a Git command used to undo changes in your working
-        directory or staging area (index). It helps you restore files to a
-        previous state — like undoing edits or un-staging files.
+        git log displays your repository's commit history with details like author,
+        date, and messages. Essential for tracking changes and understanding what
+        happened in your project over time.
       </p>
 
-      <h3>Git Revert</h3>
+      <h3>Git Stash (Temporary Storage)</h3>
       <ul>
-        <li><code>git revert &lt;commit_hash&gt;</code> — Create new commit that reverses target commit</li>
-        <li><code>git revert HEAD</code> — Undo the last commit</li>
-        <li><code>git log</code> — Find the commit hash first</li>
+        <li><code>git stash</code> — Save changes temporarily</li>
+        <li><code>git stash save "message"</code> — Stash with a description</li>
+        <li><code>git stash list</code> — List all stashes</li>
+        <li><code>git stash pop</code> — Apply and remove latest stash</li>
+        <li><code>git stash apply</code> — Apply latest stash without removing it</li>
+        <li><code>git stash apply stash@{n}</code> — Apply specific stash</li>
+        <li><code>git stash drop stash@{n}</code> — Delete specific stash</li>
+        <li><code>git stash clear</code> — Remove all stashes</li>
       </ul>
       <p>
-        git revert is a Git command used to undo a commit by creating a new
-        commit that reverses the changes of a previous commit. Unlike git reset,
-        it does not remove history; it safely undoes changes without rewriting
-        commit history.
+        git stash is a Git command that temporarily saves your uncommitted changes
+        (both staged and unstaged) so you can work on something else, then come back
+        and re-apply them later. It's useful when you need to switch branches quickly
+        but aren't ready to commit your current work. Think of it as a clipboard for
+        your changes.
       </p>
+    </section>
 
-      <h3>Git Reset</h3>
-      <ul>
-        <li><code>git reset &lt;commit_hash&gt;</code> — Move HEAD to specified commit (default: --mixed mode)</li>
-        <li><code>git reset --soft &lt;commit_hash&gt;</code> — Keep changes in staging area</li>
-        <li><code>git reset --mixed &lt;commit_hash&gt;</code> — Keep changes in working directory but unstage them</li>
-        <li><code>git reset --hard &lt;commit_hash&gt;</code> — Discard all changes completely</li>
-        <li><code>git reset HEAD~1</code> — Undo the last commit</li>
-      </ul>
-      <p>
-        git reset is a Git command used to undo commits by moving the current
-        branch pointer to a different commit. Unlike git revert, it rewrites
-        commit history by removing commits. It's powerful but should be used
-        carefully, especially on shared branches, as it can cause issues for
-        collaborators.
-      </p>
+    <!-- ============================================ -->
+    <!-- BRANCHING & MERGING -->
+    <!-- ============================================ -->
 
-      <h3>Git Amend</h3>
-      <ul>
-        <li><code>git commit --amend</code> — Modify the last commit</li>
-        <li><code>git commit --amend -m "new message"</code> — Change the last commit message</li>
-        <li><code>git commit --amend --no-edit</code> — Add changes to last commit without changing message</li>
-        <li><code>git add &lt;file&gt; && git commit --amend --no-edit</code> — Add forgotten files to last commit</li>
-        <li><code>git commit --amend --author="Name &lt;email@example.com&gt;"</code> — Change commit author</li>
-      </ul>
-      <p>
-        git commit --amend is a Git command used to modify the most recent commit.
-        It allows you to change the commit message, add forgotten files, or fix
-        small mistakes without creating a new commit. This command rewrites history,
-        so avoid using it on commits that have already been pushed to a shared
-        repository, unless you're working on a private branch.
-      </p>
+    <section class="commands">
+      <h2>  Branching & Merging</h2>
 
       <h3>Git Branches</h3>
       <ul>
@@ -216,86 +212,6 @@
         parts of a project simultaneously without interfering with each other's
         work. Branches are a core feature of Git's distributed version control
         system.
-      </p>
-
-      <h3>Git Clone</h3>
-      <ul>
-        <li><code>git clone &lt;repository_url&gt;</code> — Clone a repository into a new directory</li>
-        <li><code>git clone &lt;url&gt; &lt;directory_name&gt;</code> — Clone into a specific directory</li>
-        <li><code>git clone -b &lt;branch_name&gt; &lt;url&gt;</code> — Clone a specific branch</li>
-        <li><code>git clone --depth 1 &lt;url&gt;</code> — Shallow clone (only latest commit)</li>
-      </ul>
-      <p>
-        git clone is a Git command used to create a copy of an existing repository.
-        It downloads the entire repository including all files, branches, and commit
-        history to your local machine. This is typically the first command you run
-        when you want to work on an existing project from GitHub, GitLab, or other
-        remote repositories.
-      </p>
-
-      <h3>Git Pull</h3>
-      <ul>
-        <li><code>git pull</code> — Fetch and merge changes from remote</li>
-        <li><code>git pull origin &lt;branch_name&gt;</code> — Pull from specific branch</li>
-        <li><code>git pull --rebase</code> — Pull and rebase instead of merge</li>
-        <li><code>git pull --no-commit</code> — Pull without auto-committing merge</li>
-      </ul>
-      <p>
-        git pull is a Git command that fetches changes from a remote repository
-        and immediately merges them into your current branch. It's a combination
-        of git fetch followed by git merge. Use this command to update your local
-        branch with the latest changes from the remote repository.
-      </p>
-
-      <h3>Git Fetch</h3>
-      <ul>
-        <li><code>git fetch</code> — Download objects and refs from remote</li>
-        <li><code>git fetch origin</code> — Fetch from origin remote</li>
-        <li><code>git fetch --all</code> — Fetch from all remotes</li>
-        <li><code>git fetch --prune</code> — Remove deleted remote branches</li>
-      </ul>
-      <p>
-        git fetch is a Git command that downloads commits, files, and references
-        from a remote repository into your local repository, but doesn't merge them.
-        Unlike git pull, fetch lets you review changes before integrating them into
-        your work. It's a safer way to see what others have committed without
-        affecting your current work.
-      </p>
-
-      <h3>Git Diff</h3>
-      <ul>
-        <li><code>git diff</code> — Show unstaged changes</li>
-        <li><code>git diff --staged</code> — Show staged changes</li>
-        <li><code>git diff &lt;branch1&gt; &lt;branch2&gt;</code> — Compare two branches</li>
-        <li><code>git diff &lt;commit_hash&gt;</code> — Compare with specific commit</li>
-        <li><code>git diff HEAD</code> — Compare working directory with last commit</li>
-        <li><code>git diff &lt;file_name&gt;</code> — Show changes in specific file</li>
-      </ul>
-      <p>
-        git diff is a Git command used to show differences between commits, branches,
-        files, and more. It displays what has changed in your working directory,
-        staging area, or between different points in your project's history. This
-        is essential for reviewing changes before committing or understanding what
-        has changed between versions.
-      </p>
-
-      <h3>Git Stash</h3>
-      <ul>
-        <li><code>git stash</code> — Save changes temporarily</li>
-        <li><code>git stash save "message"</code> — Stash with a description</li>
-        <li><code>git stash list</code> — List all stashes</li>
-        <li><code>git stash pop</code> — Apply and remove latest stash</li>
-        <li><code>git stash apply</code> — Apply latest stash without removing it</li>
-        <li><code>git stash apply stash@{n}</code> — Apply specific stash</li>
-        <li><code>git stash drop stash@{n}</code> — Delete specific stash</li>
-        <li><code>git stash clear</code> — Remove all stashes</li>
-      </ul>
-      <p>
-        git stash is a Git command that temporarily saves your uncommitted changes
-        (both staged and unstaged) so you can work on something else, then come back
-        and re-apply them later. It's useful when you need to switch branches quickly
-        but aren't ready to commit your current work. Think of it as a clipboard for
-        your changes.
       </p>
 
       <h3>Pull Requests (PR)</h3>
@@ -336,14 +252,308 @@
       </p>
     </section>
 
-    <section class="github-actions">
-      <h2>GitHub Actions</h2>
+    <!--REMOTE REPOSITORIES -->
+
+    <section class="commands">
+      <h2> Remote Repositories</h2>
+
+      <h3>Git Remote</h3>
+      <ul>
+        <li><code>git remote -v</code> — List all remotes</li>
+        <li><code>git remote add &lt;name&gt; &lt;url&gt;</code> — Add remote repository</li>
+        <li><code>git remote remove &lt;name&gt;</code> — Remove remote</li>
+        <li><code>git remote rename &lt;old&gt; &lt;new&gt;</code> — Rename remote</li>
+        <li><code>git remote set-url &lt;name&gt; &lt;new-url&gt;</code> — Change remote URL</li>
+      </ul>
       <p>
-        GitHub Actions is a CI/CD platform that automates software workflows directly 
-        in your repository. You can build, test, and deploy code automatically when 
-        events occur, such as pushing code or creating pull requests. Workflows are 
-        defined using YAML files in the <code>.github/workflows</code> directory.
+        git remote manages connections to remote repositories (like GitHub).
+        Origin is the default remote name, but you can add multiple remotes to
+        collaborate with different repositories or teams.
       </p>
+
+      <h3>Git Clone</h3>
+      <ul>
+        <li><code>git clone &lt;repository_url&gt;</code> — Clone a repository into a new directory</li>
+        <li><code>git clone &lt;url&gt; &lt;directory_name&gt;</code> — Clone into a specific directory</li>
+        <li><code>git clone -b &lt;branch_name&gt; &lt;url&gt;</code> — Clone a specific branch</li>
+        <li><code>git clone --depth 1 &lt;url&gt;</code> — Shallow clone (only latest commit)</li>
+      </ul>
+      <p>
+        git clone is a Git command used to create a copy of an existing repository.
+        It downloads the entire repository including all files, branches, and commit
+        history to your local machine. This is typically the first command you run
+        when you want to work on an existing project from GitHub, GitLab, or other
+        remote repositories.
+      </p>
+
+      <h3>Git Fetch</h3>
+      <ul>
+        <li><code>git fetch</code> — Download objects and refs from remote</li>
+        <li><code>git fetch origin</code> — Fetch from origin remote</li>
+        <li><code>git fetch --all</code> — Fetch from all remotes</li>
+        <li><code>git fetch --prune</code> — Remove deleted remote branches</li>
+      </ul>
+      <p>
+        git fetch is a Git command that downloads commits, files, and references
+        from a remote repository into your local repository, but doesn't merge them.
+        Unlike git pull, fetch lets you review changes before integrating them into
+        your work. It's a safer way to see what others have committed without
+        affecting your current work.
+      </p>
+
+      <h3>Git Pull</h3>
+      <ul>
+        <li><code>git pull</code> — Fetch and merge changes from remote</li>
+        <li><code>git pull origin &lt;branch_name&gt;</code> — Pull from specific branch</li>
+        <li><code>git pull --rebase</code> — Pull and rebase instead of merge</li>
+        <li><code>git pull --no-commit</code> — Pull without auto-committing merge</li>
+      </ul>
+      <p>
+        git pull is a Git command that fetches changes from a remote repository
+        and immediately merges them into your current branch. It's a combination
+        of git fetch followed by git merge. Use this command to update your local
+        branch with the latest changes from the remote repository.
+      </p>
+    </section>
+
+    <!--  ADVANCED GIT -->
+
+    <section class="commands">
+      <h2>Advanced Git</h2>
+
+      <h3>Git Rebase</h3>
+      <ul>
+        <li><code>git rebase &lt;branch&gt;</code> — Rebase current branch onto another branch</li>
+        <li><code>git rebase -i HEAD~n</code> — Interactive rebase (edit last n commits)</li>
+        <li><code>git pull --rebase</code> — Pull with rebase instead of merge</li>
+        <li><code>git rebase --abort</code> — Cancel rebase and go back to before</li>
+        <li><code>git rebase --continue</code> — Continue after resolving conflicts</li>
+      </ul>
+      <p>
+        git rebase moves commits from one branch onto another, creating a linear history.
+        Unlike merge, it doesn't create a merge commit. Use it to keep your branch history
+        clean and organized. Be careful when rebasing shared branches!
+      </p>
+
+      <h3>Undo Changes</h3>
+
+      <h4>Git Restore</h4>
+      <ul>
+        <li><code>git restore [options] &lt;file&gt;</code> — Restore file in working directory</li>
+        <li><code>git restore --staged &lt;file&gt;</code> — Unstage file</li>
+        <li><code>git restore --source &lt;commit_hash&gt; &lt;file&gt;</code> — Restore from specific commit</li>
+      </ul>
+      <p>
+        git restore is a Git command used to undo changes in your working
+        directory or staging area (index). It helps you restore files to a
+        previous state — like undoing edits or un-staging files.
+      </p>
+
+      <h4>Git Reset</h4>
+      <ul>
+        <li><code>git reset &lt;commit_hash&gt;</code> — Move HEAD to specified commit (default: --mixed mode)</li>
+        <li><code>git reset --soft &lt;commit_hash&gt;</code> — Keep changes in staging area</li>
+        <li><code>git reset --mixed &lt;commit_hash&gt;</code> — Keep changes in working directory but unstage them</li>
+        <li><code>git reset --hard &lt;commit_hash&gt;</code> — Discard all changes completely</li>
+        <li><code>git reset HEAD~1</code> — Undo the last commit</li>
+      </ul>
+      <p>
+        git reset is a Git command used to undo commits by moving the current
+        branch pointer to a different commit. Unlike git revert, it rewrites
+        commit history by removing commits. It's powerful but should be used
+        carefully, especially on shared branches, as it can cause issues for
+        collaborators.
+      </p>
+
+      <h4>Git Revert</h4>
+      <ul>
+        <li><code>git revert &lt;commit_hash&gt;</code> — Create new commit that reverses target commit</li>
+        <li><code>git revert HEAD</code> — Undo the last commit</li>
+        <li><code>git log</code> — Find the commit hash first</li>
+      </ul>
+      <p>
+        git revert is a Git command used to undo a commit by creating a new
+        commit that reverses the changes of a previous commit. Unlike git reset,
+        it does not remove history; it safely undoes changes without rewriting
+        commit history.
+      </p>
+
+      <h4>Git Amend</h4>
+      <ul>
+        <li><code>git commit --amend</code> — Modify the last commit</li>
+        <li><code>git commit --amend -m "new message"</code> — Change the last commit message</li>
+        <li><code>git commit --amend --no-edit</code> — Add changes to last commit without changing message</li>
+        <li><code>git add &lt;file&gt; && git commit --amend --no-edit</code> — Add forgotten files to last commit</li>
+        <li><code>git commit --amend --author="Name &lt;email@example.com&gt;"</code> — Change commit author</li>
+      </ul>
+      <p>
+        git commit --amend is a Git command used to modify the most recent commit.
+        It allows you to change the commit message, add forgotten files, or fix
+        small mistakes without creating a new commit. This command rewrites history,
+        so avoid using it on commits that have already been pushed to a shared
+        repository, unless you're working on a private branch.
+      </p>
+    </section>
+
+    <!--  GITHUB ACTIONS -->
+
+    <section class="github-actions">
+      <h2>⚡ GitHub Actions</h2>
+      <p>
+        Automate your workflows! Build, test, and deploy code automatically on events like 
+        push or pull requests. Define workflows in YAML files at <code>.github/workflows</code>.
+      </p>
+      
+      <h3>Key Concepts</h3>
+      <ul>
+        <li><strong>Workflow:</strong> YAML file that defines your automation</li>
+        <li><strong>Event:</strong> What triggers the workflow (push, PR, schedule, etc.)</li>
+        <li><strong>Job:</strong> Collection of steps that run on the same runner</li>
+        <li><strong>Step:</strong> Individual command or action to execute</li>
+        <li><strong>Runner:</strong> Server that executes your workflow</li>
+      </ul>
+
+      <h3>Common Triggers</h3>
+      <ul>
+        <li><code>push</code> — When code is pushed</li>
+        <li><code>pull_request</code> — When PR is created/updated</li>
+        <li><code>schedule</code> — On a cron schedule</li>
+        <li><code>workflow_dispatch</code> — Manual trigger</li>
+      </ul>
+
+      <h3>Execution Process</h3>
+      <ol>
+        <li><strong>Event Triggered</strong> — Something happens (push, PR, schedule, etc.)</li>
+        <li><strong>Workflow Starts</strong> — GitHub reads your YAML file</li>
+        <li><strong>Jobs Run</strong> — Each job executes on a separate runner (parallel by default)</li>
+        <li><strong>Steps Execute</strong> — Actions run sequentially within each job</li>
+        <li><strong>Results</strong> — Success ✅ or failure ❌ — you get notified</li>
+      </ol>
+
+      <h3>Cron Schedule</h3>
+      <p>Run workflows automatically on a schedule using cron syntax:</p>
+      <pre><code>on:
+  schedule:
+    - cron: '0 0 * * *'  # Every day at midnight UTC
+    - cron: '*/15 * * * *'  # Every 15 minutes
+    - cron: '0 8 * * 1'  # Every Monday at 8 AM UTC
+</code></pre>
+      <p><strong>Cron Format:</strong> <code>minute hour day month weekday</code> (5 fields)</p>
+
+      <h3>Concurrency</h3>
+      <p>Control how many workflow runs execute simultaneously:</p>
+      <pre><code>name: CI
+on: [push]
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true  # Cancel previous runs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+</code></pre>
+      <ul>
+        <li><strong>group:</strong> Run classification (same ref = same group)</li>
+        <li><strong>cancel-in-progress:</strong> Cancel old runs when a new one starts</li>
+      </ul>
+
+      <h3>Caching</h3>
+      <p>Speed up workflows by caching dependencies and build outputs:</p>
+
+      <h4>Method 1: Using actions/cache (Manual)</h4>
+      <pre><code>- uses: actions/cache@v3
+  with:
+    path: node_modules
+    key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+</code></pre>
+      <p>Full control over caching logic — you specify what to cache</p>
+
+      <h4>Method 2: Built-in setup-node caching (Recommended)</h4>
+      <pre><code>- uses: actions/setup-node@v3
+  with:
+    node-version: '18'
+    cache: 'npm'  # Auto-caches node_modules based on package-lock.json
+</code></pre>
+      <p>Simpler and automatically handled — setup-node does the caching for you!</p>
+
+      <h3>Artifacts</h3>
+      <p>Store files created during workflow runs for later use:</p>
+      <ul>
+        <li><strong>Upload:</strong> Save build outputs, logs, or reports</li>
+        <li><strong>Download:</strong> Retrieve in other jobs or after workflow completion</li>
+        <li><strong>Retention:</strong> Stored for 90 days (configurable)</li>
+      </ul>
+      <pre><code>- uses: actions/upload-artifact@v3
+  with:
+    name: build-files
+    path: build/
+- uses: actions/download-artifact@v3
+  with:
+    name: build-files
+</code></pre>
+
+      <h3>Build Process Examples</h3>
+
+      <h4>Node.js</h4>
+      <pre><code>name: Node Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+</code></pre>
+
+      <h4>React</h4>
+      <pre><code>name: React Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: build/
+</code></pre>
+
+      <h4>Angular</h4>
+      <pre><code>name: Angular Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+</code></pre>
     </section>
     </main>
   </body>
