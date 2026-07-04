@@ -1,2 +1,2 @@
 
-[Visit:]([https://www.google.com](https://sudipkdk.github.io/Git-Github/))
+[Visit:](https://sudipkdk.github.io/Git-Github/))
